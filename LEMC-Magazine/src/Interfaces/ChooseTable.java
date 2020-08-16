@@ -5,11 +5,13 @@
  */
 package Interfaces;
 
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import lemc.magazine.LEMCMagazine;
 
 /**
  *
@@ -29,8 +31,9 @@ public class ChooseTable {
         rootCenter.setSpacing(40);
         Button btnSalir = new Button("Salir");
         //Top de la pantalla
-        lbl = new Label("Escoja la tabla que desea monitorear");
+        lbl = new Label("¿Qué acción desea realizar?");
         
+        /*
         //Primera fila
         Button btnEmployee = new Button("Employee");
         Button btnPhoneEmp = new Button("Phone Employee");
@@ -62,12 +65,23 @@ public class ChooseTable {
         HBox cuartaFila = new HBox();
         cuartaFila.setSpacing(40);
         cuartaFila.getChildren().addAll(btnPhonJournalist,btnSection,btnCopy);
-        
+        */
         //Agregando al root
-        rootCenter.getChildren().addAll(primeraFila,segundaFila,terceraFila,cuartaFila);
+        //rootCenter.getChildren().addAll(primeraFila,segundaFila,terceraFila,cuartaFila);
         root.setTop(lbl);
         root.setCenter(rootCenter);
         root.setBottom(btnSalir);
+        
+        Button ing=new Button("Insertar datos");
+        Button mod=new Button("Modificar datos");
+        Button elm=new Button("Eliminar datos");
+        
+        rootCenter.setSpacing(20);
+        rootCenter.getChildren().addAll(ing,mod,elm);
+        btnSalir.setOnMouseClicked(e->{ 
+                Login f=new Login();
+                LEMCMagazine.primaryStage.setScene(new Scene(f.getRoot(),500,500));
+        });
     }
     
     public BorderPane getRoot(){

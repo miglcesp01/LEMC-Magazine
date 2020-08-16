@@ -5,13 +5,16 @@
  */
 package Interfaces;
 
-
+import java.sql.ResultSet;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
-
+import Connection.ConectarBD2;
+import java.sql.SQLException;
+import javafx.scene.Scene;
+import lemc.magazine.LEMCMagazine;
 /**
  *
  * @author Lenovo
@@ -23,6 +26,7 @@ public class Login {
     private TextField txfEmail;
     private TextField txfPswd;
     private Button btnLogin;
+    private Label error;
     
     public Login(){
         crearLogin();
@@ -35,13 +39,35 @@ public class Login {
         lblDescp = new Label("Login to LEMC System");
         txfEmail=new TextField();
         txfPswd=new TextField();
+        error=new Label();
         btnLogin = new Button("Login");
-        
-        root.getChildren().addAll(lblDescp,txfEmail,txfPswd,btnLogin);
+        btnLogin.setOnMouseClicked(e ->{
+            if(getAdministers()) {
+                ChooseTable f=new ChooseTable();
+                LEMCMagazine.primaryStage.setScene(new Scene(f.root,500,500));
+            }
+        });
+        root.getChildren().addAll(lblDescp,txfEmail,txfPswd,btnLogin,error);
     }
     
     public VBox getRoot(){
         return this.root;
+    }
+    
+    private boolean getAdministers(){
+        
+        try{
+            ResultSet conj=ConectarBD2.c.ejecutarQuery("select * from Administrator;");
+            while(conj.next()){
+                if(txfEmail.getText().equals(conj.getString(1))){
+                    if(txfPswd.getText().equals(conj.getString(2))) return true;
+                }else{
+                    error.setText("El usuario o la contraseña es erroneo");
+                }
+            }
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }return false;
     }
     
     
