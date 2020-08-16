@@ -10,6 +10,7 @@ import com.mysql.jdbc.Driver;
 import com.mysql.jdbc.Statement;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 
 
 /**
@@ -28,6 +29,17 @@ public class ConectarBD2 {
     private final String usuario = "doadmin";
     private final String clave = "li9j393xzitvjhi3";
     private final String URL = "jdbc:mysql://"+servidor+":"+puerto+"/"+BD;
+    
+    public boolean conectar(String user,String pass){
+        boolean estado=false;
+        try{
+                //Establecer conexion con la BD
+                conexion = (Connection) DriverManager.getConnection(URL,user,pass);
+                estado=true;
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+    }return estado;
+    }
     
     
     public boolean conectar() throws ClassNotFoundException{
@@ -52,6 +64,7 @@ public class ConectarBD2 {
         boolean estado = false;
         try{
             statement = (Statement) conexion.createStatement();
+            ResultSet rs = statement.executeQuery ("select * from persona");
             statement.execute(sql);
             statement.close();
             estado = true;
