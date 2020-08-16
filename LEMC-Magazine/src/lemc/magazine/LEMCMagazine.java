@@ -5,10 +5,12 @@
  */
 package lemc.magazine;
 
+import Connection.ConectarBD2;
 import Interfaces.ChooseTable;
 import Interfaces.Login;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -22,13 +24,19 @@ public class LEMCMagazine extends Application{
     
     @Override
     public void start(Stage stage) throws Exception {
+        ConectarBD2 c = new ConectarBD2();
+        c.conectar();
+        TableView tabla = c.ejecutarSelectEntidad("call select_Employee");
+        
         //Login login = new Login();
         ChooseTable ct = new ChooseTable();
         primaryStage = stage;
-        Scene sc = new Scene(ct.getRoot(),500,500);
+        Scene sc = new Scene(tabla,500,500);
         primaryStage.setTitle("LEMC Magazine");
         primaryStage.setScene(sc);
         primaryStage.show();
+        
+        
     }
     
     /**

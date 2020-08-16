@@ -5,12 +5,21 @@
  */
 package Connection;
 
+import Entidades.Employee;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Driver;
 import com.mysql.jdbc.Statement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 
 /**
@@ -29,7 +38,7 @@ public class ConectarBD2 {
     private final String usuario = "doadmin";
     private final String clave = "li9j393xzitvjhi3";
     private final String URL = "jdbc:mysql://"+servidor+":"+puerto+"/"+BD;
-    
+    private TableView tabla;
     
     public boolean conectar() throws ClassNotFoundException{
         boolean estado = false;
@@ -49,18 +58,36 @@ public class ConectarBD2 {
         return estado;
     }
     
-    public boolean ejecutar(String sql) throws SQLException{
-        boolean estado = false;
+    //Esto se ejecuta cuando se quiera entrar a la tabla completa de la base de datos
+    //Existe un procedure para cada tabla
+    
+    public TableView ejecutarSelectEntidad(String sql) throws SQLException{
+        List<Employee> lista = new ArrayList<>();
+        ObservableList<Employee> lista2 = FXCollections.observableList(lista);
         try{
+            tabla = new TableView();
             statement = (Statement) conexion.createStatement();
             ResultSet s = statement.executeQuery(sql);
-            //Hacer el while
-            statement.close();
-            estado = true;
+            
+            while(s.next()){
+                Employee empleado = new Employee(s.getString(1),s.getString(2),s.getString(3),s.getInt(4),s.getString(5),
+                s.getInt(6),s.getString(7));
+                lista.add(empleado);
+            }
+        List<String> campos = Employee.getArr();
+        for(int i=0;i<campos.size();i++){
+            String atributo = campos.get(i);
+            TableColumn<Employee,String> columna=new TableColumn<>(atributo);
+            columna.setCellValueFactory(new PropertyValueFactory<>(atributo));
+            tabla.getColumns().add(columna);
+        }
+        tabla.setItems(lista2);
+        System.out.println(tabla.getItems().size());
+        statement.close();
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-        return estado;
+        return tabla;
     }
     
     public void desconectar() throws SQLException{
@@ -72,14 +99,10 @@ public class ConectarBD2 {
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
+        
     }
-    
-    public static void main(String[]args) throws ClassNotFoundException, SQLException{
-        ConectarBD2 c = new ConectarBD2();
-        c.conectar();
-        System.out.println(c.ejecutar("SELECT * FROM prueba"));
-        c.desconectar();
-    }
+   
+
     
     
 
