@@ -20,18 +20,23 @@ public class ChooseTable {
     Label lbl;
 
     public ChooseTable() {
+        crearMenu();
     }
     
     public void crearMenu(){
         root = new BorderPane();
+        VBox rootCenter = new VBox();
+        rootCenter.setSpacing(40);
+        Button btnSalir = new Button("Salir");
         //Top de la pantalla
-        lbl = new Label("Elija la tabla que desea monitorear");
+        lbl = new Label("Escoja la tabla que desea monitorear");
         
         //Primera fila
         Button btnEmployee = new Button("Employee");
         Button btnPhoneEmp = new Button("Phone Employee");
         Button btnAddress = new Button("Address");
         HBox primeraFila = new HBox();
+        primeraFila.setSpacing(40);
         primeraFila.getChildren().addAll(btnAddress,btnEmployee,btnPhoneEmp);
         
         //Segunda Fila
@@ -39,6 +44,7 @@ public class ChooseTable {
         Button btnPublicar = new Button("Publicar");
         Button btnPhoneoffice = new Button("Phone Office");
         HBox segundaFila = new HBox();
+        segundaFila.setSpacing(40);
         segundaFila.getChildren().addAll(btnBranchOffice,btnPublicar,btnPhoneoffice);
         
         //Tercera Fila
@@ -46,6 +52,7 @@ public class ChooseTable {
         Button btnJournalist = new Button("Journalist"); 
         Button btnRedactar = new Button("Redactar");
         HBox terceraFila = new HBox();
+        terceraFila.setSpacing(40);
         terceraFila.getChildren().addAll(btnMagazine,btnJournalist,btnRedactar);
         
         //Cuarta Fila
@@ -53,11 +60,18 @@ public class ChooseTable {
         Button btnSection = new Button("Section");
         Button btnCopy = new Button("Copy");
         HBox cuartaFila = new HBox();
+        cuartaFila.setSpacing(40);
         cuartaFila.getChildren().addAll(btnPhonJournalist,btnSection,btnCopy);
         
         //Agregando al root
+        rootCenter.getChildren().addAll(primeraFila,segundaFila,terceraFila,cuartaFila);
         root.setTop(lbl);
-        
+        root.setCenter(rootCenter);
+        root.setBottom(btnSalir);
+    }
+    
+    public BorderPane getRoot(){
+        return this.root;
     }
     
     

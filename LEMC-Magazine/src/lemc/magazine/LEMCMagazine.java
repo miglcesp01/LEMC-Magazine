@@ -5,6 +5,7 @@
  */
 package lemc.magazine;
 
+import Interfaces.ChooseTable;
 import Interfaces.Login;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -21,9 +22,10 @@ public class LEMCMagazine extends Application{
     
     @Override
     public void start(Stage stage) throws Exception {
-        Login login = new Login();
+        //Login login = new Login();
+        ChooseTable ct = new ChooseTable();
         primaryStage = stage;
-        Scene sc = new Scene(login.getRoot(),500,500);
+        Scene sc = new Scene(ct.getRoot(),500,500);
         primaryStage.setTitle("LEMC Magazine");
         primaryStage.setScene(sc);
         primaryStage.show();

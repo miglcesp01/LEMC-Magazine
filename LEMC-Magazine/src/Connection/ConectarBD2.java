@@ -9,6 +9,7 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Driver;
 import com.mysql.jdbc.Statement;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
@@ -52,7 +53,8 @@ public class ConectarBD2 {
         boolean estado = false;
         try{
             statement = (Statement) conexion.createStatement();
-            statement.execute(sql);
+            ResultSet s = statement.executeQuery(sql);
+            //Hacer el while
             statement.close();
             estado = true;
         }catch(Exception e){
@@ -72,17 +74,14 @@ public class ConectarBD2 {
         }
     }
     
-    
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+    public static void main(String[]args) throws ClassNotFoundException, SQLException{
         ConectarBD2 c = new ConectarBD2();
         c.conectar();
-        String sql = "CREATE TABLE prueba2(id int PRIMARY KEY);";
-        c.ejecutar(sql);
+        System.out.println(c.ejecutar("SELECT * FROM prueba"));
         c.desconectar();
     }
+    
+    
+
     
 }
