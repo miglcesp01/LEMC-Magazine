@@ -21,7 +21,7 @@ import Entidades.Employee;
  * @author Alexis
  */
 public class Consultar {
-    private static TableView tabla;
+    /*private static TableView tabla;
     
     public static TableView ejecutarSelectEntidad(String sql) throws SQLException{
         tabla=new TableView();
@@ -49,5 +49,5 @@ public class Consultar {
             System.out.println(e.getMessage());
         }
         return tabla;
-    }
+    }*/
 }

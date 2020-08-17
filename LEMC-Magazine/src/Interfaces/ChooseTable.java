@@ -6,6 +6,9 @@
 package Interfaces;
 
 import Connection.BDController;
+import Entidades.BranchOffice;
+import Entidades.Employee;
+import Entidades.Magazine;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -37,7 +40,7 @@ public class ChooseTable {
         //Primera fila
         Button btnEmployee = new Button("Employee");
         btnEmployee.setOnAction(e->{
-            TableView tabla = BDController.vistaEmployee("Select * From ");
+            TableView tabla = BDController.vistaTabla(new Employee(),"Select * From ");
             LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
         });
         Button btnPhoneEmp = new Button("Phone Employee");
@@ -49,7 +52,7 @@ public class ChooseTable {
         //Segunda Fila
         Button btnBranchOffice = new Button("Branch Office");
         btnBranchOffice.setOnAction(e->{
-            TableView tabla = BDController.vistaBranch("Select * From ");
+            TableView tabla = BDController.vistaTabla(new BranchOffice(),"Select * From ");
             LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
         });
         Button btnPublicar = new Button("Publicar");
@@ -61,7 +64,7 @@ public class ChooseTable {
         //Tercera Fila
         Button btnMagazine = new Button("Magazine");
         btnMagazine.setOnAction(e->{
-            TableView tabla = BDController.vistaMagazine("Select * FROM ");
+            TableView tabla = BDController.vistaTabla(new Magazine(),"Select * FROM ");
             LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
         });
         Button btnJournalist = new Button("Journalist"); 

@@ -5,14 +5,21 @@
  */
 package Entidades;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  *
  * @author Lenovo
  */
-public class Employee {
+public class Employee implements Entidad{
     private String DNI;
     private String Nombre;
     private String Apellido;
@@ -20,6 +27,9 @@ public class Employee {
     private String BornDate;
     private int AddressH;
     private String IdBranchOffice;
+    
+    public Employee(){
+    }
     
 
     public Employee(String DNI, String nombre, String apellido, int Age,String bornDate,int addressH, String idBranchOffice) {
@@ -33,11 +43,27 @@ public class Employee {
         
     }
     
-    public static ArrayList<String> getArr(){
+    public void setColumn(TableView tabla) {
         ArrayList<String> arr=new ArrayList<>();
         arr.add("DNI");arr.add("Nombre");arr.add("Apellido");arr.add("Age");arr.add("BornDate");
         arr.add("AddressH");arr.add("IdBranchOffice");
-        return arr;
+        for (String atributo:arr) {
+            TableColumn<Employee, String> columna = new TableColumn<>(atributo);
+            columna.setCellValueFactory(new PropertyValueFactory<>(atributo));
+            tabla.getColumns().add(columna);
+        }
+    }
+    
+    public void getRow(ResultSet s,ObservableList<Entidad> lista)throws SQLException{
+        try{
+        while (s.next()) {
+                Employee empleado = new Employee(s.getString(1), s.getString(2), s.getString(3), s.getInt(4), s.getString(5),
+                        s.getInt(6), s.getString(7));
+                lista.add(empleado);
+            }
+        }catch(SQLException ex){
+            throw ex;
+        }
     }
 
     public String getDNI() {
@@ -95,7 +121,11 @@ public class Employee {
     public void setIdBranchOffice(String idBranchOffice) {
         this.IdBranchOffice = idBranchOffice;
     }
-    
+
+    @Override
+    public String getNameClass() {
+        return "Employee";
+    }
     
     
 }

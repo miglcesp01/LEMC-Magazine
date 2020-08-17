@@ -5,17 +5,28 @@
  */
 package Entidades;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.ObservableList;
+import javafx.print.Collation;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  *
  * @author Lenovo
  */
-public class BranchOffice {
-    
+public class BranchOffice implements Entidad {
+
     private String Id;
     private String Email;
     private int Address;
+
+    public BranchOffice() {
+    }
 
     public BranchOffice(String Id, String Email, int Address) {
         this.Id = Id;
@@ -23,12 +34,30 @@ public class BranchOffice {
         this.Address = Address;
     }
 
-    public static ArrayList<String> getArr() {
+    public void setColumn(TableView tabla) {
         ArrayList<String> arr = new ArrayList<>();
-        arr.add("Id");arr.add("Email");arr.add("Address");
-        return arr;
+        arr.add("Id");
+        arr.add("Email");
+        arr.add("Address");
+        for (String atributo:arr) {
+            TableColumn<Employee, String> columna = new TableColumn<>(atributo);
+            columna.setCellValueFactory(new PropertyValueFactory<>(atributo));
+            tabla.getColumns().add(columna);
+        }
     }
 
+    @Override
+    public void getRow(ResultSet s,ObservableList<Entidad> lista) throws SQLException{
+        try{
+        while (s.next()) {
+                BranchOffice oficina = new BranchOffice(s.getString(1), s.getString(2), s.getInt(3));
+                lista.add(oficina);
+            }
+        }catch(SQLException ex){
+            throw ex;
+        }
+    }
+    
     public String getId() {
         return Id;
     }
@@ -57,9 +86,10 @@ public class BranchOffice {
     public String toString() {
         return "BranchOffice{" + "Id=" + Id + ", Email=" + Email + ", Address=" + Address + '}';
     }
-  
-    
-    
-    
-    
+
+    @Override
+    public String getNameClass() {
+        return "BranchOffice";
+    }
+
 }
