@@ -28,21 +28,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class ConectarBD2 {
     public static final ConectarBD2 c=new ConectarBD2();
-    private Connection conexion;
-    private Statement statement;
+    public static Connection conexion;
+    private static Statement statement;
     //Datos para la conexion con la DB
-    private final String servidor = "db-mysql-nyc1-16715-do-user-7889205-0.a.db.ondigitalocean.com";
-    private final String puerto = "25060";
-    private final String BD = "LEMC";
-    private final String usuario = "eddo";
-    private final String clave = "eddo1";
-    private final String URL = "jdbc:mysql://"+servidor+":"+puerto+"/"+BD;
+    private final static String servidor = "db-mysql-nyc1-16715-do-user-7889205-0.a.db.ondigitalocean.com";
+    private final static String puerto = "25060";
+    private final static String BD = "LEMC";
+    private final static String usuario = "eddo";
+    private final static String clave = "eddo1";
+    private final static String URL = "jdbc:mysql://"+servidor+":"+puerto+"/"+BD;
     
-    public ConectarBD2(){
-        conectar();
-    }
-    
-    private boolean conectar(){
+    public static Connection conectar(){
         boolean estado = false;
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -57,7 +53,7 @@ public class ConectarBD2 {
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-        return estado;
+        return conexion;
     }
     
     //Esto se ejecuta cuando se quiera entrar a la tabla completa de la base de datos

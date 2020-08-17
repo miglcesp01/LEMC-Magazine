@@ -25,11 +25,11 @@ public class LEMCMagazine extends Application{
     
     @Override
     public void start(Stage stage) throws Exception {
-        ConectarBD2 c = new ConectarBD2();
+        ConectarBD2.c.conectar();
         Login login = new Login();
         ChooseTable ct = new ChooseTable();
         primaryStage = stage;
-        Scene sc = new Scene(login.getRoot(),500,500);
+        Scene sc = new Scene(ct.getRoot(),500,500);
         primaryStage.setTitle("LEMC Magazine");
         primaryStage.setScene(sc);
         primaryStage.show();
