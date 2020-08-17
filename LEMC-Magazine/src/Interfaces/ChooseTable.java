@@ -6,9 +6,18 @@
 package Interfaces;
 
 import Connection.BDController;
+import Entidades.Address;
 import Entidades.BranchOffice;
+import Entidades.Copy;
 import Entidades.Employee;
+import Entidades.Journalist;
 import Entidades.Magazine;
+import Entidades.PhoneBranchOffice;
+import Entidades.PhoneEmployee;
+import Entidades.PhoneJournalist;
+import Entidades.Publicar;
+import Entidades.Redactar;
+import Entidades.Section;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -44,7 +53,15 @@ public class ChooseTable {
             LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
         });
         Button btnPhoneEmp = new Button("Phone Employee");
+        btnPhoneEmp.setOnAction(e->{
+            TableView tabla = BDController.vistaTabla(new PhoneEmployee(),"Select * From ");
+            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+        });
         Button btnAddress = new Button("Address");
+        btnAddress.setOnAction(e->{
+            TableView tabla = BDController.vistaTabla(new Address(),"Select * From ");
+            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+        });
         HBox primeraFila = new HBox();
         primeraFila.setSpacing(40);
         primeraFila.getChildren().addAll(btnAddress,btnEmployee,btnPhoneEmp);
@@ -55,8 +72,17 @@ public class ChooseTable {
             TableView tabla = BDController.vistaTabla(new BranchOffice(),"Select * From ");
             LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
         });
+        
         Button btnPublicar = new Button("Publicar");
+        btnPublicar.setOnAction(e->{
+            TableView tabla = BDController.vistaTabla(new Publicar(),"Select * From ");
+            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+        });
         Button btnPhoneoffice = new Button("Phone Office");
+        btnPhoneoffice.setOnAction(e->{
+            TableView tabla = BDController.vistaTabla(new PhoneBranchOffice(),"Select * From ");
+            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+        });
         HBox segundaFila = new HBox();
         segundaFila.setSpacing(40);
         segundaFila.getChildren().addAll(btnBranchOffice,btnPublicar,btnPhoneoffice);
@@ -68,18 +94,38 @@ public class ChooseTable {
             LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
         });
         Button btnJournalist = new Button("Journalist"); 
+        btnJournalist.setOnAction(e->{
+            TableView tabla = BDController.vistaTabla(new Journalist(),"Select * FROM ");
+            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+        });
         Button btnRedactar = new Button("Redactar");
+        btnRedactar.setOnAction(e->{
+            TableView tabla = BDController.vistaTabla(new Redactar(),"Select * FROM ");
+            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+        });
         HBox terceraFila = new HBox();
         terceraFila.setSpacing(40);
         terceraFila.getChildren().addAll(btnMagazine,btnJournalist,btnRedactar);
         
         //Cuarta Fila
-        Button btnPhonJournalist = new Button("Phone Journalist");
+        Button btnPhoneJournalist = new Button("Phone Journalist");
+        btnPhoneJournalist.setOnAction(e->{
+            TableView tabla = BDController.vistaTabla(new PhoneJournalist(),"Select * FROM ");
+            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+        });
         Button btnSection = new Button("Section");
+        btnSection.setOnAction(e->{
+            TableView tabla = BDController.vistaTabla(new Section(),"Select * FROM ");
+            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+        });
         Button btnCopy = new Button("Copy");
+        btnCopy.setOnAction(e->{
+            TableView tabla = BDController.vistaTabla(new Copy(),"Select * FROM ");
+            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+        });
         HBox cuartaFila = new HBox();
         cuartaFila.setSpacing(40);
-        cuartaFila.getChildren().addAll(btnPhonJournalist,btnSection,btnCopy);
+        cuartaFila.getChildren().addAll(btnPhoneJournalist,btnSection,btnCopy);
         
         //Agregando al root
         rootCenter.getChildren().addAll(primeraFila,segundaFila,terceraFila,cuartaFila);
