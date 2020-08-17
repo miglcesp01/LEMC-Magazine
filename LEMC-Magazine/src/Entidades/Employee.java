@@ -20,7 +20,6 @@ public class Employee {
     private String BornDate;
     private int AddressH;
     private String IdBranchOffice;
-    private static ArrayList<String> arr = new ArrayList<>();
     
 
     public Employee(String DNI, String nombre, String apellido, int Age,String bornDate,int addressH, String idBranchOffice) {
@@ -35,9 +34,10 @@ public class Employee {
     }
     
     public static ArrayList<String> getArr(){
+        ArrayList<String> arr=new ArrayList<>();
         arr.add("DNI");arr.add("Nombre");arr.add("Apellido");arr.add("Age");arr.add("BornDate");
         arr.add("AddressH");arr.add("IdBranchOffice");
-        return Employee.arr;
+        return arr;
     }
 
     public String getDNI() {

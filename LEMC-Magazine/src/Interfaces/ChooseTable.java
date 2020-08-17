@@ -5,9 +5,11 @@
  */
 package Interfaces;
 
+import Connection.BDController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -32,10 +34,12 @@ public class ChooseTable {
         Button btnSalir = new Button("Salir");
         //Top de la pantalla
         lbl = new Label("¿Qué acción desea realizar?");
-        
-        
         //Primera fila
         Button btnEmployee = new Button("Employee");
+        btnEmployee.setOnAction(e->{
+            TableView tabla = BDController.vistaEmployee("Select * From ");
+            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+        });
         Button btnPhoneEmp = new Button("Phone Employee");
         Button btnAddress = new Button("Address");
         HBox primeraFila = new HBox();
@@ -44,6 +48,10 @@ public class ChooseTable {
         
         //Segunda Fila
         Button btnBranchOffice = new Button("Branch Office");
+        btnBranchOffice.setOnAction(e->{
+            TableView tabla = BDController.vistaBranch("Select * From ");
+            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+        });
         Button btnPublicar = new Button("Publicar");
         Button btnPhoneoffice = new Button("Phone Office");
         HBox segundaFila = new HBox();
@@ -52,6 +60,10 @@ public class ChooseTable {
         
         //Tercera Fila
         Button btnMagazine = new Button("Magazine");
+        btnMagazine.setOnAction(e->{
+            TableView tabla = BDController.vistaMagazine("Select * FROM ");
+            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+        });
         Button btnJournalist = new Button("Journalist"); 
         Button btnRedactar = new Button("Redactar");
         HBox terceraFila = new HBox();
@@ -71,7 +83,15 @@ public class ChooseTable {
         root.setTop(lbl);
         root.setCenter(rootCenter);
         root.setBottom(btnSalir);
+
+        rootCenter.setSpacing(20);
+        /*Button ing=new Button("Insertar datos");
+        Button mod=new Button("Modificar datos");
+        Button elm=new Button("Eliminar datos");
         
+        
+        rootCenter.getChildren().addAll(ing,mod,elm);
+*/
         btnSalir.setOnMouseClicked(e->{ 
                 Login f=new Login();
                 LEMCMagazine.primaryStage.setScene(new Scene(f.getRoot(),500,500));
