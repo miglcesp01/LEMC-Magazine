@@ -50,17 +50,21 @@ public class ChooseTable {
         Button btnEmployee = new Button("Employee");
         btnEmployee.setOnAction(e->{
             TableView tabla = BDController.vistaTabla(new Employee(),"Select * From ");
-            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+            SistemaTablas st = new SistemaTablas(tabla,"Employee");
+            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
+        
         Button btnPhoneEmp = new Button("Phone Employee");
         btnPhoneEmp.setOnAction(e->{
             TableView tabla = BDController.vistaTabla(new PhoneEmployee(),"Select * From ");
-            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+            SistemaTablas st = new SistemaTablas(tabla,"Phone Employee");
+            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         Button btnAddress = new Button("Address");
         btnAddress.setOnAction(e->{
             TableView tabla = BDController.vistaTabla(new Address(),"Select * From ");
-            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+            SistemaTablas st = new SistemaTablas(tabla,"Address");
+            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         HBox primeraFila = new HBox();
         primeraFila.setSpacing(40);
@@ -70,18 +74,21 @@ public class ChooseTable {
         Button btnBranchOffice = new Button("Branch Office");
         btnBranchOffice.setOnAction(e->{
             TableView tabla = BDController.vistaTabla(new BranchOffice(),"Select * From ");
-            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+            SistemaTablas st = new SistemaTablas(tabla,"BranchOffice");
+            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         
         Button btnPublicar = new Button("Publicar");
         btnPublicar.setOnAction(e->{
             TableView tabla = BDController.vistaTabla(new Publicar(),"Select * From ");
-            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+            SistemaTablas st = new SistemaTablas(tabla,"Publicar");
+            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         Button btnPhoneoffice = new Button("Phone Office");
         btnPhoneoffice.setOnAction(e->{
             TableView tabla = BDController.vistaTabla(new PhoneBranchOffice(),"Select * From ");
-            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+            SistemaTablas st = new SistemaTablas(tabla,"PhoneBranchOffice");
+            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         HBox segundaFila = new HBox();
         segundaFila.setSpacing(40);
@@ -91,17 +98,20 @@ public class ChooseTable {
         Button btnMagazine = new Button("Magazine");
         btnMagazine.setOnAction(e->{
             TableView tabla = BDController.vistaTabla(new Magazine(),"Select * FROM ");
-            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+            SistemaTablas st = new SistemaTablas(tabla,"Magazine");
+            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         Button btnJournalist = new Button("Journalist"); 
         btnJournalist.setOnAction(e->{
             TableView tabla = BDController.vistaTabla(new Journalist(),"Select * FROM ");
-            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+            SistemaTablas st = new SistemaTablas(tabla,"Journalist");
+            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         Button btnRedactar = new Button("Redactar");
         btnRedactar.setOnAction(e->{
             TableView tabla = BDController.vistaTabla(new Redactar(),"Select * FROM ");
-            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+            SistemaTablas st = new SistemaTablas(tabla,"Redactar");
+            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         HBox terceraFila = new HBox();
         terceraFila.setSpacing(40);
@@ -111,17 +121,20 @@ public class ChooseTable {
         Button btnPhoneJournalist = new Button("Phone Journalist");
         btnPhoneJournalist.setOnAction(e->{
             TableView tabla = BDController.vistaTabla(new PhoneJournalist(),"Select * FROM ");
-            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+            SistemaTablas st = new SistemaTablas(tabla,"PhoneJournalist");
+            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         Button btnSection = new Button("Section");
         btnSection.setOnAction(e->{
             TableView tabla = BDController.vistaTabla(new Section(),"Select * FROM ");
-            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+            SistemaTablas st = new SistemaTablas(tabla,"Section");
+            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         Button btnCopy = new Button("Copy");
         btnCopy.setOnAction(e->{
             TableView tabla = BDController.vistaTabla(new Copy(),"Select * FROM ");
-            LEMCMagazine.primaryStage.setScene(new Scene(tabla,500,500));
+            SistemaTablas st = new SistemaTablas(tabla,"Copy");
+            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         HBox cuartaFila = new HBox();
         cuartaFila.setSpacing(40);

@@ -57,8 +57,8 @@ public class Copy implements Entidad{
     @Override
     public void setColumn(TableView tabla) {
         ArrayList<String> arr2=new ArrayList<>();
-         arr.add("IdMagazine");arr.add("PagesNumber");arr.add("Sells");arr.add("CreationDate");
-        arr.add("IdCopy");
+        arr2.add("IdMagazine");arr2.add("PagesNumber");arr2.add("Sells");arr2.add("CreationDate");
+        arr2.add("IdCopy");
          for(String atributo:arr2){
              TableColumn<Copy, String> columna = new TableColumn<>(atributo);
             columna.setCellValueFactory(new PropertyValueFactory<>(atributo));
