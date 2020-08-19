@@ -5,11 +5,13 @@
  */
 package Interfaces;
 
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import lemc.magazine.LEMCMagazine;
 
 /**
@@ -19,17 +21,19 @@ import lemc.magazine.LEMCMagazine;
 public class SistemaTablas {
     private BorderPane  root;
     private TableView tabla;
+    private String nombreTabla;
     
     public SistemaTablas(TableView tabla,String nombreClase){
      root = new BorderPane();
      this.tabla = tabla;
-     crearTop(nombreClase);
+     this.nombreTabla = nombreClase;
+     crearTop();
      crearMain();
      crearBottom();
     }
     
-    private void crearTop(String tabla){
-        Label lbl = new Label("Tabla Monitoreada: "+tabla);
+    private void crearTop(){
+        Label lbl = new Label("Tabla Monitoreada: "+nombreTabla);
         root.setTop(lbl);
     }
     
@@ -38,16 +42,35 @@ public class SistemaTablas {
     }
     
     private void crearBottom(){
+        HBox rootBottom = new HBox();
+        Button btnInsertInto = new Button("Insertar Tupla");
+        Button btnDelete = new Button("Eliminar Tupla");
+        Button btnUpdate  = new Button("Actualizar");
         Button btnSalir = new Button("Salir");
-        root.setBottom(btnSalir);
+        rootBottom.getChildren().addAll(btnSalir,btnDelete,btnUpdate,btnInsertInto);
+        rootBottom.setSpacing(40);
         
+        root.setBottom(rootBottom);
+        
+        //Acciones de los botones
         btnSalir.setOnAction(e->{
             ChooseTable ct = new ChooseTable();
             LEMCMagazine.primaryStage.setScene(new Scene(ct.getRoot(),500,500));
         });
+        
+        btnInsertInto.setOnAction(e->{
+           FormularioInsert fi = new FormularioInsert(nombreTabla);
+            root.setCenter(fi.getRoot());
+           
+           //LEMCMagazine.primaryStage.setScene(new Scene(fi.getRoot(),500,500));
+        });
     }    
     public BorderPane getRoot(){
         return root;
+    }
+    
+    public void setCentro(Node nodo){
+        root.setCenter(nodo);
     }
     
 }
