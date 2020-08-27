@@ -34,6 +34,16 @@ public class Magazine implements Entidad {
         this.title = title;
         this.Type = Type;
     }
+    
+    @Override
+    public ArrayList<String> getArr() {
+        ArrayList<String> arr = new ArrayList<>();
+        arr.add("id");
+        arr.add("Periodicity");
+        arr.add("Title");
+        arr.add("Type");
+        return arr;
+    }
 
     public void setColumn(TableView tabla) {
         ArrayList<String> arr = new ArrayList<>();
@@ -95,5 +105,7 @@ public class Magazine implements Entidad {
     public String getNameClass() {
         return "Magazine";
     }
+
+    
 
 }

@@ -31,7 +31,7 @@ public class Section implements Entidad{
         this.IdSection = IdSection;
     }
 
-    public static ArrayList<String> getArr() {
+    public ArrayList<String> getArr() {
         arr = new ArrayList<>();
         arr.add("IdMagazine");arr.add("Title");arr.add("Extension");arr.add("IdSection");
         return arr;

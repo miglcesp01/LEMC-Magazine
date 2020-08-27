@@ -45,6 +45,15 @@ public class BranchOffice implements Entidad {
             tabla.getColumns().add(columna);
         }
     }
+    
+    @Override
+    public ArrayList<String> getArr(){
+        ArrayList<String> arr = new ArrayList<>();
+        arr.add("Id");
+        arr.add("Email");
+        arr.add("Address");
+        return arr;
+    }
 
     @Override
     public void getRow(ResultSet s,ObservableList<Entidad> lista) throws SQLException{

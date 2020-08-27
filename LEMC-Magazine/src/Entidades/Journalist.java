@@ -38,7 +38,12 @@ public class Journalist implements Entidad{
         this.Speciality = Speciality;
     }
     
-    public static ArrayList<String> getArr(){
+    /**
+     *
+     * @return
+     */
+    @Override
+    public ArrayList<String> getArr(){
         arr = new ArrayList<>();
         arr.add("DNI");arr.add("Nombre");arr.add("Apellido");arr.add("Age");arr.add("BornDate");
         arr.add("AddressH");arr.add("Speciality");

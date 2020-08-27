@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import Entidades.Entidad;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -22,14 +23,16 @@ public class SistemaTablas {
     private BorderPane  root;
     private TableView tabla;
     private String nombreTabla;
+    private Entidad entidad;
     
-    public SistemaTablas(TableView tabla,String nombreClase){
+    public SistemaTablas(TableView tabla,String nombreClase,Entidad entidad){
      root = new BorderPane();
      this.tabla = tabla;
      this.nombreTabla = nombreClase;
      crearTop();
      crearMain();
      crearBottom();
+     this.entidad = entidad;
     }
     
     private void crearTop(){
@@ -59,7 +62,7 @@ public class SistemaTablas {
         });
         
         btnInsertInto.setOnAction(e->{
-           FormularioInsert fi = new FormularioInsert(nombreTabla);
+           FormularioInsert fi = new FormularioInsert(nombreTabla,entidad);
             root.setCenter(fi.getRoot());
            
            //LEMCMagazine.primaryStage.setScene(new Scene(fi.getRoot(),500,500));

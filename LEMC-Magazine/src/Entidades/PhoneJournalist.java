@@ -29,7 +29,7 @@ public class PhoneJournalist implements Entidad{
         this.DNIJournalist = DNIJournalist;
     }
     
-    public static ArrayList<String> getArr(){
+    public ArrayList<String> getArr(){
         arr = new ArrayList<>();
         arr.add("Id");arr.add("NoPhone");arr.add("DNIJournalist");
         return arr;

@@ -27,7 +27,7 @@ public class Publicar implements Entidad{
         this.IdBranchoffice = IdBranchoffice;
     }
 
-    public static ArrayList<String> getArr() {
+    public ArrayList<String> getArr() {
         arr = new ArrayList<>();
         arr.add("IdMagazine");arr.add("IdBranchOffice");
         return arr;

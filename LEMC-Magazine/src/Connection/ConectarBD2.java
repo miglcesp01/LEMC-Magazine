@@ -74,6 +74,18 @@ public class ConectarBD2 {
         }return s;
     }
     
+    public static boolean ejecutarInsert(String sql) throws SQLException{
+        boolean b= false;
+        try{
+            statement=(Statement)conexion.createStatement();
+            statement.executeQuery(sql);
+            b = true;
+            return b;
+        }catch(Exception e){
+            return b;
+        }
+    }
+    
     public void desconectar() throws SQLException{
         try{
             if(conexion!=null){

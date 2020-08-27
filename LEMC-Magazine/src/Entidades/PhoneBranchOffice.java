@@ -33,7 +33,7 @@ public class PhoneBranchOffice implements Entidad{
         
     }
     
-    public static ArrayList<String> getArr(){
+    public ArrayList<String> getArr(){
         arr = new ArrayList<>();
         arr.add("Id");arr.add("NoPhone");arr.add("IdBranchOffice");
         return arr;

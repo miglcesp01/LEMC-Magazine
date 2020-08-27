@@ -29,7 +29,7 @@ public class Redactar implements Entidad{
         this.IdMagazine = IdMagazine;
     }
 
-    public static ArrayList<String> getArr() {
+    public ArrayList<String> getArr() {
         arr = new ArrayList<>();
         arr.add("IdRedactar");arr.add("DNI");arr.add("IdMagazine");
         return arr;

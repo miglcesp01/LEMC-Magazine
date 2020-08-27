@@ -49,21 +49,24 @@ public class ChooseTable {
         //Primera fila
         Button btnEmployee = new Button("Employee");
         btnEmployee.setOnAction(e->{
-            TableView tabla = BDController.vistaTabla(new Employee(),"Select * From ");
-            SistemaTablas st = new SistemaTablas(tabla,"Employee");
+            Employee empleado = new Employee();
+            TableView tabla = BDController.vistaTabla(empleado,"Select * From ");
+            SistemaTablas st = new SistemaTablas(tabla,"Employee",empleado);
             LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         
         Button btnPhoneEmp = new Button("Phone Employee");
         btnPhoneEmp.setOnAction(e->{
-            TableView tabla = BDController.vistaTabla(new PhoneEmployee(),"Select * From ");
-            SistemaTablas st = new SistemaTablas(tabla,"Phone Employee");
+            PhoneEmployee pe = new PhoneEmployee();
+            TableView tabla = BDController.vistaTabla(pe,"Select * From ");
+            SistemaTablas st = new SistemaTablas(tabla,"Phone Employee",pe);
             LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         Button btnAddress = new Button("Address");
         btnAddress.setOnAction(e->{
-            TableView tabla = BDController.vistaTabla(new Address(),"Select * From ");
-            SistemaTablas st = new SistemaTablas(tabla,"Address");
+            Address a = new Address();
+            TableView tabla = BDController.vistaTabla(a,"Select * From ");
+            SistemaTablas st = new SistemaTablas(tabla,"Address",a);
             LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         HBox primeraFila = new HBox();
@@ -73,21 +76,24 @@ public class ChooseTable {
         //Segunda Fila
         Button btnBranchOffice = new Button("Branch Office");
         btnBranchOffice.setOnAction(e->{
-            TableView tabla = BDController.vistaTabla(new BranchOffice(),"Select * From ");
-            SistemaTablas st = new SistemaTablas(tabla,"BranchOffice");
+            BranchOffice b = new BranchOffice();
+            TableView tabla = BDController.vistaTabla(b,"Select * From ");
+            SistemaTablas st = new SistemaTablas(tabla,"BranchOffice",b);
             LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         
         Button btnPublicar = new Button("Publicar");
         btnPublicar.setOnAction(e->{
-            TableView tabla = BDController.vistaTabla(new Publicar(),"Select * From ");
-            SistemaTablas st = new SistemaTablas(tabla,"Publicar");
+            Publicar p = new Publicar();
+            TableView tabla = BDController.vistaTabla(p,"Select * From ");
+            SistemaTablas st = new SistemaTablas(tabla,"Publicar",p);
             LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         Button btnPhoneoffice = new Button("Phone Office");
         btnPhoneoffice.setOnAction(e->{
-            TableView tabla = BDController.vistaTabla(new PhoneBranchOffice(),"Select * From ");
-            SistemaTablas st = new SistemaTablas(tabla,"PhoneBranchOffice");
+            PhoneBranchOffice pb = new PhoneBranchOffice();
+            TableView tabla = BDController.vistaTabla(pb,"Select * From ");
+            SistemaTablas st = new SistemaTablas(tabla,"PhoneBranchOffice",pb);
             LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         HBox segundaFila = new HBox();
@@ -97,20 +103,23 @@ public class ChooseTable {
         //Tercera Fila
         Button btnMagazine = new Button("Magazine");
         btnMagazine.setOnAction(e->{
-            TableView tabla = BDController.vistaTabla(new Magazine(),"Select * FROM ");
-            SistemaTablas st = new SistemaTablas(tabla,"Magazine");
+            Magazine m = new Magazine();
+            TableView tabla = BDController.vistaTabla(m,"Select * FROM ");
+            SistemaTablas st = new SistemaTablas(tabla,"Magazine",m);
             LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         Button btnJournalist = new Button("Journalist"); 
         btnJournalist.setOnAction(e->{
-            TableView tabla = BDController.vistaTabla(new Journalist(),"Select * FROM ");
-            SistemaTablas st = new SistemaTablas(tabla,"Journalist");
+            Journalist  j = new Journalist();
+            TableView tabla = BDController.vistaTabla(j,"Select * FROM ");
+            SistemaTablas st = new SistemaTablas(tabla,"Journalist",j);
             LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         Button btnRedactar = new Button("Redactar");
         btnRedactar.setOnAction(e->{
-            TableView tabla = BDController.vistaTabla(new Redactar(),"Select * FROM ");
-            SistemaTablas st = new SistemaTablas(tabla,"Redactar");
+            Redactar r = new Redactar();
+            TableView tabla = BDController.vistaTabla(r,"Select * FROM ");
+            SistemaTablas st = new SistemaTablas(tabla,"Redactar",r);
             LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         HBox terceraFila = new HBox();
@@ -120,20 +129,23 @@ public class ChooseTable {
         //Cuarta Fila
         Button btnPhoneJournalist = new Button("Phone Journalist");
         btnPhoneJournalist.setOnAction(e->{
-            TableView tabla = BDController.vistaTabla(new PhoneJournalist(),"Select * FROM ");
-            SistemaTablas st = new SistemaTablas(tabla,"PhoneJournalist");
+            PhoneJournalist pj = new PhoneJournalist();
+            TableView tabla = BDController.vistaTabla(pj,"Select * FROM ");
+            SistemaTablas st = new SistemaTablas(tabla,"PhoneJournalist",pj);
             LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         Button btnSection = new Button("Section");
         btnSection.setOnAction(e->{
-            TableView tabla = BDController.vistaTabla(new Section(),"Select * FROM ");
-            SistemaTablas st = new SistemaTablas(tabla,"Section");
+            Section s = new Section();
+            TableView tabla = BDController.vistaTabla(s,"Select * FROM ");
+            SistemaTablas st = new SistemaTablas(tabla,"Section",s);
             LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         Button btnCopy = new Button("Copy");
         btnCopy.setOnAction(e->{
-            TableView tabla = BDController.vistaTabla(new Copy(),"Select * FROM ");
-            SistemaTablas st = new SistemaTablas(tabla,"Copy");
+            Copy c = new Copy();
+            TableView tabla = BDController.vistaTabla(c,"Select * FROM ");
+            SistemaTablas st = new SistemaTablas(tabla,"Copy",c);
             LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
         });
         HBox cuartaFila = new HBox();

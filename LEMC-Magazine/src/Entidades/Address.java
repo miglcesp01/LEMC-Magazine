@@ -67,7 +67,7 @@ public class Address implements Entidad {
         this.Calle = Calle;
     }
 
-    public static ArrayList<String> getArr() {
+    public ArrayList<String> getArr() {
         arr = new ArrayList<>();
         arr.add("Id_Address");arr.add("Numero");arr.add("Ciudad");arr.add("Calle");
         return Address.arr;

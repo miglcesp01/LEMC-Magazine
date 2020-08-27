@@ -31,6 +31,14 @@ public class Employee implements Entidad{
     public Employee(){
     }
     
+    @Override
+    public ArrayList<String> getArr(){
+        ArrayList<String> arr = new ArrayList<>();
+        arr.add("DNI");arr.add("Nombre");arr.add("Apellido");arr.add("BornDate");
+        arr.add("Age");arr.add("AddressH");arr.add("IdBranchOffice");
+        return arr;
+    }
+    
 
     public Employee(String DNI, String nombre, String apellido, int Age,String bornDate,int addressH, String idBranchOffice) {
         this.DNI = DNI;

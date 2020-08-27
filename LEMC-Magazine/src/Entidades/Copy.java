@@ -38,7 +38,7 @@ public class Copy implements Entidad{
         this.IdCopy = IdCopy;
     }
 
-    public static ArrayList<String> getArr() {
+    public ArrayList<String> getArr() {
         arr = new ArrayList<>();
         arr.add("IdMagazine");arr.add("PagesNumber");arr.add("Sells");arr.add("CreationDate");
         arr.add("IdCopy");

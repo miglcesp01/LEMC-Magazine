@@ -10,6 +10,7 @@ import java.util.Set;
 import javafx.scene.control.TableView;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javafx.collections.ObservableList;
 /**
  *
@@ -19,4 +20,5 @@ public interface Entidad {
     String getNameClass();
     void setColumn(TableView tabla);
     void getRow(ResultSet s,ObservableList<Entidad> lista)throws SQLException;
+    ArrayList<String> getArr();
 }
