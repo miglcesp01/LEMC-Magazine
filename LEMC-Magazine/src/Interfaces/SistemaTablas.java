@@ -13,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import lemc.magazine.LEMCMagazine;
 
 /**
@@ -63,11 +65,20 @@ public class SistemaTablas {
         
         btnInsertInto.setOnAction(e->{
            FormularioInsert fi = new FormularioInsert(nombreTabla,entidad);
+            root.getChildren().clear();
+            crearTop();
             root.setCenter(fi.getRoot());
-           
            //LEMCMagazine.primaryStage.setScene(new Scene(fi.getRoot(),500,500));
         });
-    }    
+        
+        btnDelete.setOnAction(e->{
+            FormularioDelete fd = new FormularioDelete(nombreTabla, entidad);
+            root.getChildren().clear();
+            crearTop();
+            root.setCenter(fd.getRoot());
+        });
+    }
+    
     public BorderPane getRoot(){
         return root;
     }

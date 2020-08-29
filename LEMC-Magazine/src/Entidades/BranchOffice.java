@@ -101,4 +101,9 @@ public class BranchOffice implements Entidad {
         return "BranchOffice";
     }
 
+    @Override
+    public ArrayList<Object> getTiposDatos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

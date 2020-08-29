@@ -21,4 +21,5 @@ public interface Entidad {
     void setColumn(TableView tabla);
     void getRow(ResultSet s,ObservableList<Entidad> lista)throws SQLException;
     ArrayList<String> getArr();
+    ArrayList<Object> getTiposDatos();
 }

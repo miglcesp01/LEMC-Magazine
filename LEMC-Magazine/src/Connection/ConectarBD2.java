@@ -78,10 +78,24 @@ public class ConectarBD2 {
         boolean b= false;
         try{
             statement=(Statement)conexion.createStatement();
-            statement.executeQuery(sql);
+            statement.execute(sql);
             b = true;
             return b;
         }catch(Exception e){
+            System.out.println(e.getMessage());
+            return b;
+        }
+    }
+    
+    public static boolean ejecutarDelete(String sql) throws SQLException{
+        boolean b = false;
+        try{
+            statement=(Statement)conexion.createStatement();
+            statement.execute(sql);
+            b = true;
+            return b;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
             return b;
         }
     }

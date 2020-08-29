@@ -2,6 +2,29 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Interfaces/ChooseTable.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Entidades/Administraror.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Entidades/Copy.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Entidades/PhoneBranchOffice.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Interfaces/SistemaTablas.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/lemc/magazine/LEMCMagazine.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Connection/ConectarBD2.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Entidades/Redactar.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Entidades/Entidad.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Interfaces/Consultar.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Interfaces/FormularioInsert.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Entidades/Employee.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Entidades/BranchOffice.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Entidades/Address.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Interfaces/Login.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Entidades/Section.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Entidades/Journalist.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Connection/BDController.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Entidades/Magazine.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Entidades/Publicar.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Entidades/PhoneEmployee.java</file>
+            <file>file:/F:/Bases%20de%20Datos/Proyecto%20Final/Repo/LEMC-Magazine/LEMC-Magazine/src/Entidades/PhoneJournalist.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -72,6 +72,8 @@ public class Address implements Entidad {
         arr.add("Id_Address");arr.add("Numero");arr.add("Ciudad");arr.add("Calle");
         return Address.arr;
     }
+    
+   
 
     public static void setArr(ArrayList<String> arr) {
         Address.arr = arr;
@@ -103,6 +105,16 @@ public class Address implements Entidad {
         }catch(SQLException ex){
             throw ex;
         }
+    }
+
+    @Override
+    public ArrayList<Object> getTiposDatos() {
+        ArrayList<Object> tiposDatos = new ArrayList<>();
+        tiposDatos.add((Integer)3);
+        tiposDatos.add(new String());
+        tiposDatos.add(new String());
+        tiposDatos.add(new String());
+        return tiposDatos;
     }
     
     

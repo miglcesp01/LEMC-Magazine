@@ -72,6 +72,16 @@ public class Section implements Entidad{
     public Section(){
         
     }
+
+    @Override
+    public ArrayList<Object> getTiposDatos() {
+        ArrayList<Object> tiposDatos = new ArrayList<>();
+        tiposDatos.add((Integer)3);
+        tiposDatos.add(new String());
+        tiposDatos.add(new String());
+        tiposDatos.add((Integer)3);
+        return tiposDatos;
+    }
     
     
 }
