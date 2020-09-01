@@ -59,8 +59,8 @@ public class SistemaTablas {
         
         //Acciones de los botones
         btnSalir.setOnAction(e->{
-            ChooseTable ct = new ChooseTable();
-            LEMCMagazine.primaryStage.setScene(new Scene(ct.getRoot(),500,500));
+            Login f=new Login();
+            LEMCMagazine.primaryStage.setScene(new Scene(f.getRoot(),500,500));
         });
         
         btnInsertInto.setOnAction(e->{

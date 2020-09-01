@@ -5,8 +5,8 @@
  */
 package lemc.magazine;
 
+import Connection.BDController;
 import Connection.ConectarBD2;
-import Interfaces.ChooseTable;
 import Interfaces.Login;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -14,7 +14,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import Connection.ConectarBD2;
+import Entidades.Employee;
 import Interfaces.Consultar;
+import Interfaces.SistemaTablas;
 /**
  *
  * @author Lenovo
@@ -26,13 +28,14 @@ public class LEMCMagazine extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         Login login = new Login();
-        ChooseTable ct = new ChooseTable();
+        Employee empleado = new Employee();
+        TableView tabla = BDController.vistaTabla(empleado,"Select * From ");
+        SistemaTablas st = new SistemaTablas(tabla,"Employee",empleado);
         primaryStage = stage;
-        Scene sc = new Scene(ct.getRoot(),500,500);
+        Scene sc = new Scene(st.getRoot(),500,500);
         primaryStage.setTitle("LEMC Magazine");
         primaryStage.setScene(sc);
         primaryStage.show();
-        
         
     }
     

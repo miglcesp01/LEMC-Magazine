@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import Connection.BDController;
 import java.sql.ResultSet;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,8 +13,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import Connection.ConectarBD2;
+import Entidades.Employee;
 import java.sql.SQLException;
 import javafx.scene.Scene;
+import javafx.scene.control.TableView;
 import lemc.magazine.LEMCMagazine;
 /**
  *
@@ -43,8 +46,10 @@ public class Login {
         btnLogin = new Button("Login");
         btnLogin.setOnMouseClicked(e ->{
             if(getAdministers()) {
-                ChooseTable f=new ChooseTable();
-                LEMCMagazine.primaryStage.setScene(new Scene(f.root,500,500));
+                Employee empleado = new Employee();
+                TableView tabla = BDController.vistaTabla(empleado,"Select * From ");
+                SistemaTablas st = new SistemaTablas(tabla,"Employee",empleado);
+                LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
             }
         });
         root.getChildren().addAll(lblDescp,txfEmail,txfPswd,btnLogin,error);
