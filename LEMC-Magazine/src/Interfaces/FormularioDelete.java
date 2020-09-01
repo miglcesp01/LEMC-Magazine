@@ -39,24 +39,24 @@ public class FormularioDelete {
     
     private void crearCenter(){
         HBox contenedorFormulario = new HBox();
-        Label id = new Label("Inserte el PrimaryKey");
+        Label id = new Label("Inserte La cedula de la persona que desea eliminar");
         TextField txf = new TextField();
         Button btn  = new Button("Eliminar");
         contenedorFormulario.getChildren().addAll(id,txf,btn);
         root.getChildren().add(contenedorFormulario);
          btn.setOnAction(e->{
             try {
-                eliminar();
+                eliminar(txf.getText());
             } catch (SQLException ex) {
                 Logger.getLogger(FormularioDelete.class.getName()).log(Level.SEVERE, null, ex);
             }
          });
     }
     
-    private void eliminar() throws SQLException{
+    private void eliminar(String clave) throws SQLException{
         StringBuilder sb = new StringBuilder();
         String primary = entidad.getArr().get(0);
-        sb.append("Delete from "+nombreClase+" where "+primary+"=");
+        sb.append("Delete from "+ nombreClase +" where "+primary+"="+clave+";");
         Object primaryDato = entidad.getTiposDatos().get(0);
         if(primaryDato instanceof Integer){
             HBox contenedor = (HBox) root.getChildren().get(0);
