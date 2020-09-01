@@ -64,6 +64,7 @@ public class FormularioInsert {
         for(int i = 0;i<datosField.size();i++){
             if(entidad.getTiposDatos().get(i) instanceof Integer){
                 sb.append(datosField.get(i)+",");
+                System.out.println(datosField.get(i));
             }else{
                 sb.append("'"+datosField.get(i)+"',");
             }

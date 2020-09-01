@@ -34,8 +34,8 @@ public class Employee implements Entidad{
     @Override
     public ArrayList<String> getArr(){
         ArrayList<String> arr = new ArrayList<>();
-        arr.add("DNI");arr.add("Nombre");arr.add("Apellido");arr.add("BornDate");
-        arr.add("Age");arr.add("AddressH");arr.add("IdBranchOffice");
+        arr.add("DNI");arr.add("Nombre");arr.add("Apellido");arr.add("Age");
+        arr.add("BornDate");arr.add("AddressH");arr.add("IdBranchOffice");
         return arr;
     }
     
@@ -137,8 +137,18 @@ public class Employee implements Entidad{
 
     @Override
     public ArrayList<Object> getTiposDatos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Object> tiposDatos = new ArrayList<>();
+        tiposDatos.add(new String());
+        tiposDatos.add(new String());
+        tiposDatos.add(new String());
+        tiposDatos.add((Integer)3);
+        tiposDatos.add(new String());
+        tiposDatos.add((Integer)3);
+        tiposDatos.add(new String());
+        return tiposDatos; //To change body of generated methods, choose Tools | Templates.
     }
     
+
+   
     
 }

@@ -32,11 +32,10 @@ public class LEMCMagazine extends Application{
         TableView tabla = BDController.vistaTabla(empleado,"Select * From ");
         SistemaTablas st = new SistemaTablas(tabla,"Employee",empleado);
         primaryStage = stage;
-        Scene sc = new Scene(st.getRoot(),500,500);
+        Scene sc = new Scene(st.getRoot(),600,450);
         primaryStage.setTitle("LEMC Magazine");
         primaryStage.setScene(sc);
         primaryStage.show();
-        
     }
     
     /**
