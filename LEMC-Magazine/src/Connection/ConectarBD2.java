@@ -100,6 +100,7 @@ public class ConectarBD2 {
         }
     }
     
+    
     public void desconectar() throws SQLException{
         try{
             if(conexion!=null){

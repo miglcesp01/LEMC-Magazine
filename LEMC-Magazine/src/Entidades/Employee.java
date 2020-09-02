@@ -38,7 +38,12 @@ public class Employee implements Entidad{
         arr.add("BornDate");arr.add("AddressH");arr.add("IdBranchOffice");
         return arr;
     }
-    
+    public Employee(String DNI, String nombre, String apellido,String idBranchOffice){
+        this.DNI = DNI;
+        this.Nombre = nombre;
+        this.Apellido = apellido;
+        this.IdBranchOffice = idBranchOffice;
+    }
 
     public Employee(String DNI, String nombre, String apellido, int Age,String bornDate,int addressH, String idBranchOffice) {
         this.DNI = DNI;
