@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -52,7 +52,9 @@ public class SistemaTablas {
     }
     
     private void crearTop(){
-        Label lbl = new Label("Tabla Monitoreada: "+nombreTabla);
+        Label lbl = new Label("Tabla "+nombreTabla);
+        lbl.setId("Titulo");
+        lbl.setAlignment(Pos.CENTER);
         root.setTop(lbl);
     }
     
@@ -69,6 +71,9 @@ public class SistemaTablas {
         rootBottom.getChildren().addAll(btnSalir,btnDelete,btnUpdate,btnInsertInto);
         rootBottom.setSpacing(40);
         
+        rootBottom.setAlignment(Pos.CENTER);
+        rootBottom.setPadding(new Insets(10, 10, 0, 10));
+        root.setPadding(new Insets(10, 10, 10, 10));
         root.setBottom(rootBottom);
         
         //Acciones de los botones
