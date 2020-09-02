@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import lemc.magazine.LEMCMagazine;
@@ -29,32 +32,46 @@ import lemc.magazine.LEMCMagazine;
  * @author Lenovo
  */
 public class FormularioInsert {
-    private BorderPane root;
     private Entidad entidad;
+    private BorderPane root;
+    private VBox contenedorFormulario;
+    private GridPane cntDatos;
     private String nombreClase;
     
-    public FormularioInsert(String nombreClase,Entidad entidad){
-        this.nombreClase = nombreClase;
+    public FormularioInsert(String nombreClase,Entidad entidad,BorderPane bord){
         this.entidad = entidad;
-        root = new BorderPane();
+        this.nombreClase = nombreClase;
+        root=bord;
+        contenedorFormulario=new VBox();
+        cntDatos= new GridPane();
         crearCenter();
     }
     
     public void crearCenter(){
-        VBox contenedorFormulario = new VBox();
-        for(String s:entidad.getArr()){
-            Label lbl = new Label(s);
+        cntDatos.setPadding(new Insets(20));
+        cntDatos.setHgap(25);
+        cntDatos.setVgap(15);
+        Label titulo = new Label("Agregar Empleado");
+        titulo.setId("titulo");
+        for(int i=0;i<entidad.getArr().size();i++){
+            Label lbl = new Label(entidad.getArr().get(i));
             TextField txf = new TextField();
-            HBox contenedor = new HBox(lbl,txf);
-            contenedor.setSpacing(20);
-            contenedorFormulario.getChildren().add(contenedor);
+            cntDatos.add(lbl, 0, i);
+            cntDatos.add(txf, 1, i);
         }
+        contenedorFormulario.getChildren().add(titulo);
+        contenedorFormulario.getChildren().add(cntDatos);
+        Button btnCerrar = new Button("Cerrar");
         Button btnInsertar = new Button("Insertar");
-        contenedorFormulario.getChildren().add(btnInsertar);
-        root.setCenter(contenedorFormulario);
+        HBox Botones= new HBox();
+        Botones.getChildren().addAll(btnCerrar,btnInsertar);
+        contenedorFormulario.getChildren().add(Botones);
+        contenedorFormulario.setAlignment(Pos.CENTER);
         btnInsertar.setOnAction(e->{
             insertar(agarrarDatosField());
-            
+        });
+        btnCerrar.setOnAction(e -> {
+            root.setLeft(null);
         });
     }
     
@@ -83,19 +100,17 @@ public class FormularioInsert {
     
     private ArrayList<String> agarrarDatosField(){
         ArrayList<String> arr = new ArrayList<>();
-        VBox contenedorFormulario = (VBox) root.getCenter();
-        for(int i=0;i<contenedorFormulario.getChildren().size()-1;i++){
-            HBox contenedor = (HBox)contenedorFormulario.getChildren().get(i);
-            TextField txf = (TextField) contenedor.getChildren().get(1);
+        for(int i=1;i<cntDatos.getChildren().size();i=i+2){
+            System.out.println(cntDatos.getChildren().getClass());
+            TextField txf = (TextField) cntDatos.getChildren().get(i);
+            System.out.println(txf.getText());
             arr.add(txf.getText());
         }
         return arr;
     }
     
-    
-    
-    public BorderPane getRoot(){
-        return this.root;
+    public VBox getRoot(){
+        return this.contenedorFormulario;
     }    
     
 }

@@ -90,10 +90,8 @@ public class SistemaTablas {
         });
 
         btnInsertInto.setOnAction(e -> {
-            FormularioInsert fi = new FormularioInsert(nombreTabla, entidad);
-            root.getChildren().clear();
-            crearTop();
-            root.setCenter(fi.getRoot());
+            FormularioInsert fi = new FormularioInsert(nombreTabla,entidad,root);
+            root.setLeft(fi.getRoot());
         });
         btnDelete.setOnAction(e -> {
 
