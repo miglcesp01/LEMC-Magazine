@@ -5,12 +5,21 @@
  */
 package Interfaces;
 
+import Connection.BDController;
+import Connection.ConectarBD2;
+import Entidades.Employee;
 import Entidades.Entidad;
+import java.sql.SQLException;
+import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -71,11 +80,33 @@ public class SistemaTablas {
            //LEMCMagazine.primaryStage.setScene(new Scene(fi.getRoot(),500,500));
         });
         
-        btnDelete.setOnAction(e->{
+        /**btnDelete.setOnAction(e->{
             FormularioDelete fd = new FormularioDelete(nombreTabla, entidad);
             root.getChildren().clear();
             crearTop();
             root.setCenter(fd.getRoot());
+        });**/
+        btnDelete.setOnAction(e -> {
+
+            Employee empleado = (Employee) tabla.getSelectionModel().getSelectedItem();
+
+            if (empleado != null) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation");
+                alert.setHeaderText("Eliminar persona");
+                alert.setContentText("Esta seguro de querer eliminar a esta persona?");
+                alert.showAndWait();
+
+                if (alert.getResult().getText().equalsIgnoreCase("ok")) {
+                    try {
+                        eliminar(empleado);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(SistemaTablas.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+            }
+
         });
     }
     
@@ -86,5 +117,18 @@ public class SistemaTablas {
     public void setCentro(Node nodo){
         root.setCenter(nodo);
     }
-    
+    private void eliminar(Employee empleado) throws SQLException{
+        StringBuilder sb = new StringBuilder();
+        String primary = entidad.getArr().get(0);
+        sb.append("Delete from "+ empleado.getNameClass()+" where "+primary+"="+empleado.getDNI()+";");
+        try{
+            System.out.println(ConectarBD2.ejecutarDelete(sb.toString()));
+            TableView tabla = BDController.vistaTabla(entidad,"Select * From ");
+            SistemaTablas st = new SistemaTablas(tabla,"Employee",entidad);
+            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        
+    }
 }
