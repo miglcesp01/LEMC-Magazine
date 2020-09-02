@@ -26,6 +26,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import lemc.magazine.LEMCMagazine;
+import static lemc.magazine.LEMCMagazine.primaryStage;
 
 /**
  *
@@ -64,6 +65,8 @@ public class FormularioInsert {
         Button btnCerrar = new Button("Cerrar");
         Button btnInsertar = new Button("Insertar");
         HBox Botones= new HBox();
+        Botones.setAlignment(Pos.CENTER);
+        Botones.setSpacing(20);
         Botones.getChildren().addAll(btnCerrar,btnInsertar);
         contenedorFormulario.getChildren().add(Botones);
         contenedorFormulario.setAlignment(Pos.CENTER);
@@ -92,7 +95,11 @@ public class FormularioInsert {
             System.out.println(ConectarBD2.ejecutarInsert(sb.toString()));
             TableView tabla = BDController.vistaTabla(entidad,"Select * From ");
             SistemaTablas st = new SistemaTablas(tabla,"Employee",entidad);
-            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
+            Scene scene = new Scene(st.getRoot(), 550, 650);
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add("css/estilos.css");
+            primaryStage.setTitle("LEMC Magazine");
+            primaryStage.setScene(scene);
         }catch(SQLException h){
             System.out.println(h.getMessage());
         }

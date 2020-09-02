@@ -81,7 +81,7 @@ public class SistemaTablas {
         //Acciones de los botones
         btnSalir.setOnAction(e -> {
             Login f = new Login();
-            Scene sc = new Scene(f.getRoot(),300,250);
+            Scene sc = new Scene(f.getRoot(), 300, 250);
             sc.getStylesheets().clear();
             sc.getStylesheets().add("css/estilos.css");
             primaryStage.setTitle("LEMC Magazine");
@@ -90,7 +90,7 @@ public class SistemaTablas {
         });
 
         btnInsertInto.setOnAction(e -> {
-            FormularioInsert fi = new FormularioInsert(nombreTabla,entidad,root);
+            FormularioInsert fi = new FormularioInsert(nombreTabla, entidad, root);
             root.setLeft(fi.getRoot());
         });
         btnDelete.setOnAction(e -> {
@@ -146,7 +146,11 @@ public class SistemaTablas {
             System.out.println(ConectarBD2.ejecutarDelete(sb.toString()));
             TableView tabla = BDController.vistaTabla(entidad, "Select * From ");
             SistemaTablas st = new SistemaTablas(tabla, "Employee", entidad);
-            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(), 500, 500));
+            Scene scene = new Scene(st.getRoot(), 550, 650);
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add("css/estilos.css");
+            primaryStage.setTitle("LEMC Magazine");
+            primaryStage.setScene(scene);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -234,7 +238,11 @@ public class SistemaTablas {
             System.out.println(ConectarBD2.ejecutarDelete(sb.toString()));
             TableView tabla = BDController.vistaTabla(entidad, "Select * From ");
             SistemaTablas st = new SistemaTablas(tabla, "Employee", entidad);
-            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(), 500, 500));
+            Scene scene = new Scene(st.getRoot(), 550, 650);
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add("css/estilos.css");
+            primaryStage.setTitle("LEMC Magazine");
+            primaryStage.setScene(scene);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

@@ -25,6 +25,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import lemc.magazine.LEMCMagazine;
 import javafx.geometry.Insets;
+import static lemc.magazine.LEMCMagazine.primaryStage;
 
 /**
  *
@@ -74,7 +75,11 @@ public class Login {
                 Employee empleado = new Employee();
                 TableView tabla = BDController.vistaTabla(empleado, "Select * From ");
                 SistemaTablas st = new SistemaTablas(tabla, "Employee", empleado);
-                LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(), 500, 500));
+                Scene sc = new Scene(st.getRoot(), 550, 650);
+                sc.getStylesheets().clear();
+                sc.getStylesheets().add("css/estilos.css");
+                primaryStage.setTitle("LEMC Magazine");
+                primaryStage.setScene(sc);
             }
         });
         //root.getChildren().addAll(lblDescp,txfEmail,txfPswd,btnLogin,error);
@@ -90,7 +95,7 @@ public class Login {
         //root.setCenter(group);
         btnLogin.setAlignment(Pos.CENTER);
         //root.setBottom(btnLogin);
-        root.getChildren().addAll(lblDescp,grid,btnLogin,error);
+        root.getChildren().addAll(lblDescp, grid, btnLogin, error);
 
     }
 
