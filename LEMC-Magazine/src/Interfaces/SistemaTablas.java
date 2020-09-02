@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -30,60 +30,67 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import lemc.magazine.LEMCMagazine;
+import static lemc.magazine.LEMCMagazine.primaryStage;
 
 /**
  *
  * @author Lenovo
  */
 public class SistemaTablas {
-    private BorderPane  root;
+
+    private BorderPane root;
     private TableView tabla;
     private String nombreTabla;
     private Entidad entidad;
-    
-    public SistemaTablas(TableView tabla,String nombreClase,Entidad entidad){
-     root = new BorderPane();
-     this.tabla = tabla;
-     this.nombreTabla = nombreClase;
-     crearTop();
-     crearMain();
-     crearBottom();
-     this.entidad = entidad;
+
+    public SistemaTablas(TableView tabla, String nombreClase, Entidad entidad) {
+        root = new BorderPane();
+        this.tabla = tabla;
+        this.nombreTabla = nombreClase;
+        crearTop();
+        crearMain();
+        crearBottom();
+        this.entidad = entidad;
     }
-    
-    private void crearTop(){
-        Label lbl = new Label("Tabla "+nombreTabla);
+
+    private void crearTop() {
+        Label lbl = new Label("Tabla " + nombreTabla);
         lbl.setId("Titulo");
         lbl.setAlignment(Pos.CENTER);
         root.setTop(lbl);
     }
-    
-    private void crearMain(){
+
+    private void crearMain() {
         root.setCenter(tabla);
     }
-    
-    private void crearBottom(){
+
+    private void crearBottom() {
         HBox rootBottom = new HBox();
         Button btnInsertInto = new Button("Insertar Tupla");
         Button btnDelete = new Button("Eliminar Tupla");
-        Button btnUpdate  = new Button("Actualizar");
+        Button btnUpdate = new Button("Actualizar");
         Button btnSalir = new Button("Salir");
-        rootBottom.getChildren().addAll(btnSalir,btnDelete,btnUpdate,btnInsertInto);
+        rootBottom.getChildren().addAll(btnSalir, btnDelete, btnUpdate, btnInsertInto);
         rootBottom.setSpacing(40);
-        
+
         rootBottom.setAlignment(Pos.CENTER);
         rootBottom.setPadding(new Insets(10, 10, 0, 10));
         root.setPadding(new Insets(10, 10, 10, 10));
         root.setBottom(rootBottom);
-        
+
         //Acciones de los botones
-        btnSalir.setOnAction(e->{
-            Login f=new Login();
-            LEMCMagazine.primaryStage.setScene(new Scene(f.getRoot(),500,500));
+        btnSalir.setOnAction(e -> {
+            Login f = new Login();
+            Scene sc = new Scene(f.getRoot(),300,250);
+            sc.getStylesheets().clear();
+            sc.getStylesheets().add("css/estilos.css");
+            primaryStage.setTitle("LEMC Magazine");
+            primaryStage.setScene(sc);
+            primaryStage.show();
         });
-        
-        btnInsertInto.setOnAction(e->{
-           FormularioInsert fi = new FormularioInsert(nombreTabla,entidad);
+
+        btnInsertInto.setOnAction(e -> {
+            FormularioInsert fi = new FormularioInsert(nombreTabla, entidad);
             root.getChildren().clear();
             crearTop();
             root.setCenter(fi.getRoot());
@@ -109,9 +116,9 @@ public class SistemaTablas {
 
             }
         });
-           btnUpdate.setOnAction(e -> {
+        btnUpdate.setOnAction(e -> {
             try {
-                Employee empleado  = (Employee) tabla.getSelectionModel().getSelectedItem();
+                Employee empleado = (Employee) tabla.getSelectionModel().getSelectedItem();
                 crearContenidoDerecho(empleado);
             } catch (java.lang.NullPointerException ex) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -124,28 +131,30 @@ public class SistemaTablas {
 
         });
     }
-    
-    public BorderPane getRoot(){
+
+    public BorderPane getRoot() {
         return root;
     }
-    
-    public void setCentro(Node nodo){
+
+    public void setCentro(Node nodo) {
         root.setCenter(nodo);
     }
-    private void eliminar(Employee empleado) throws SQLException{
+
+    private void eliminar(Employee empleado) throws SQLException {
         StringBuilder sb = new StringBuilder();
         String primary = entidad.getArr().get(0);
-        sb.append("Delete from "+ empleado.getNameClass()+" where "+primary+"="+empleado.getDNI()+";");
-        try{
+        sb.append("Delete from " + empleado.getNameClass() + " where " + primary + "=" + empleado.getDNI() + ";");
+        try {
             System.out.println(ConectarBD2.ejecutarDelete(sb.toString()));
-            TableView tabla = BDController.vistaTabla(entidad,"Select * From ");
-            SistemaTablas st = new SistemaTablas(tabla,"Employee",entidad);
-            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
-        }catch(SQLException e){
+            TableView tabla = BDController.vistaTabla(entidad, "Select * From ");
+            SistemaTablas st = new SistemaTablas(tabla, "Employee", entidad);
+            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(), 500, 500));
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        
+
     }
+
     private void crearContenidoDerecho(Employee empleado) {
         VBox form1 = new VBox(5);
         Label titulo = new Label("Edicion de empleado");
@@ -172,18 +181,18 @@ public class SistemaTablas {
         cntDatos.add(lblApellidos, 0, 2);
         cntDatos.add(txtApellidos, 1, 2);
         cntDatos.setAlignment(Pos.CENTER);
-        
+
         Label lblBranchOffice = new Label("IdBranchOffice");
         TextField txtBranchOffice = new TextField(empleado.getIdBranchOffice());
         cntDatos.add(lblBranchOffice, 0, 3);
         cntDatos.add(txtBranchOffice, 1, 3);
         cntDatos.setAlignment(Pos.CENTER);
-        
+
         HBox cntBotones = new HBox(5);
         Button btnGuardar = new Button("Guardar");
         btnGuardar.setOnAction(e -> {
-            Employee EmpleadoModificado= new Employee(txtCedula.getText(),txtNombres.getText(),txtApellidos.getText(),txtBranchOffice.getText());
-            try {  
+            Employee EmpleadoModificado = new Employee(txtCedula.getText(), txtNombres.getText(), txtApellidos.getText(), txtBranchOffice.getText());
+            try {
                 actualizar(EmpleadoModificado);
                 actualizarTableView();
                 root.setRight(new VBox());
@@ -205,26 +214,32 @@ public class SistemaTablas {
         root.setRight(form1);
 
     }
+
     public void actualizarTableView() {
-        TableView tabla = BDController.vistaTabla(entidad,"Select * From ");
-        SistemaTablas st = new SistemaTablas(tabla,"Employee",entidad);
-        LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
-        
+        TableView tabla = BDController.vistaTabla(entidad, "Select * From ");
+        SistemaTablas st = new SistemaTablas(tabla, "Employee", entidad);
+        Scene scene = new Scene(st.getRoot(), 550, 650);
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add("css/estilos.css");
+        primaryStage.setTitle("LEMC Magazine");
+        primaryStage.setScene(scene);
+
     }
-    private void actualizar(Employee empleado) throws SQLException{
+
+    private void actualizar(Employee empleado) throws SQLException {
         StringBuilder sb = new StringBuilder();
-         String primary = entidad.getArr().get(0);
-         String nombre = entidad.getArr().get(1);
+        String primary = entidad.getArr().get(0);
+        String nombre = entidad.getArr().get(1);
         System.out.println(nombre);
-        sb.append("Update "+empleado.getNameClass() +" Set nombre = '"+empleado.getNombre()+"' ,apellido = '"+empleado.getApellido()+"' , idBranchOfficeE = '"+empleado.getIdBranchOffice()+"' Where DNI = "+empleado.getDNI()+";");
-        try{
+        sb.append("Update " + empleado.getNameClass() + " Set nombre = '" + empleado.getNombre() + "' ,apellido = '" + empleado.getApellido() + "' , idBranchOfficeE = '" + empleado.getIdBranchOffice() + "' Where DNI = " + empleado.getDNI() + ";");
+        try {
             System.out.println(ConectarBD2.ejecutarDelete(sb.toString()));
-            TableView tabla = BDController.vistaTabla(entidad,"Select * From ");
-            SistemaTablas st = new SistemaTablas(tabla,"Employee",entidad);
-            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(),500,500));
-        }catch(SQLException e){
+            TableView tabla = BDController.vistaTabla(entidad, "Select * From ");
+            SistemaTablas st = new SistemaTablas(tabla, "Employee", entidad);
+            LEMCMagazine.primaryStage.setScene(new Scene(st.getRoot(), 500, 500));
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        
+
     }
 }
